@@ -1,1 +1,331 @@
-/* CSS stykes go in here */
+/* Reset */
+* {
+    box-sizing: border-box;
+}
+body, html {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+a {
+    color: inherit;
+}
+
+/* Variables */
+$main-border: 2px solid #000;
+$black: #000000;
+$white: #ffffff;
+
+/* Typography */
+p, a, button, span {
+    font-family: degular,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+em, p em, a em, button em, span em {
+    font-family: degular,sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+h1, h2, h3, h4, h5 {
+    font-family: degular,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+h1 em, h2 em, h3 em, h4 em, h5 em {
+    font-family: degular,sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Navigation */
+.nav {
+    width: 100%;
+    border-bottom: $main-border;
+    padding: 10px 0px;
+}
+.nav-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+}
+.nav-cell {
+    display: flex;
+    justify-content: center;
+}
+.nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.nav li {
+    margin: 0px 10px 0px 0px;
+}
+.nav a {
+    text-decoration: none;
+}
+.nav .hamburger {
+    margin-left: 20px;
+}
+.nav .hamburger-icon {
+    cursor: pointer;
+}
+/* Mini-Cart */
+.mini-cart-container {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    right: -40%;
+    bottom: 0;
+    width: 40%;
+    max-width: 350px;
+    height: 100vh;
+    background: #ffffff;
+    border-left: $main-border;
+}
+.mini-cart {
+    position: relative;
+}
+.mini-cart .row {
+    position: relative;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    padding: 10px;
+}
+/* Mini-Cart: Top Bar*/
+.mini-cart-topbar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.mini-cart-topbar .title {
+    margin-bottom: 40px;
+}
+.mini-cart-topbar .title h2 {
+    font-size: 14px;
+    margin: 0px;
+}
+.mini-cart-topbar .close {
+    text-align: right;
+}
+.mini-cart-topbar .close-icon {
+    cursor: pointer;
+}
+/* Mini-Cart: Items */
+table.mini-cart-item {
+    width: 100%;
+    margin: 0px;
+}
+
+table.mini-cart-item th:first-of-type {
+    text-align: left;
+}
+table.mini-cart-item tr {
+    display: grid;
+    grid-template-columns: 6fr 2fr 2fr 1fr;
+}
+table.mini-cart-item tr.item {
+    border-bottom: $main-border;
+    padding: 10px 0px;
+}
+.mini-cart-item td:first-of-type {
+    text-align: left;
+}
+.mini-cart-item td {
+    text-align: center;
+}
+.mini-cart .product-title h2 {
+    font-size: 14px;
+    margin: 0px;
+}
+.mini-cart-item input[type="number"] {
+    width: 100%;
+    border: $main-border;
+}
+.mini-cart-item input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    background: transparent;
+}
+/* Actions */
+.mini-cart .actions {
+    width: 100%;
+    position: absolute;
+    float: left;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.mini-cart .subtotal {
+    width: 100%;
+    text-align: center;
+    border-top: $main-border;
+    border-bottom: $main-border;
+}
+.mini-cart .actions .buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.mini-cart .actions .buttons .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px;
+}
+.mini-cart .actions .buttons .cell:first-of-type {
+    border-right: $main-border;
+}
+
+.mini-cart .actions input[type="submit"] {
+    background: $black;
+    color: $white;
+    border: 0px;
+    padding: 10px 14px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+/* Cart Page */
+.cart .cart-page-title {
+    padding: 40px 10px;
+}
+.cart h2,
+.cart h3 {
+    margin: 0px;
+}
+.cart h2 {
+    font-size: 16px;
+}
+.cart h3 {
+    font-size: 14px;
+}
+/* Cart: Grid */
+.cart-item-grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 1fr;
+    align-items: stretch;
+}
+.cart-item-grid div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+/* Cart: Table Header */ 
+.cart-item-grid.cart-header {
+    border-top: $main-border;
+    border-bottom: $main-border;
+}
+.cart .cart-header div {
+    text-align: left;
+    border-right: $main-border;
+    text-align: center;
+}
+.cart .cart-header div:first-of-type {
+    border-right: 0px;
+    text-align: left;
+}
+.cart .cart-header div:last-of-type {
+    border-right: 0px;
+}
+.cart .product-price,
+.cart .quantity,
+.cart .total,
+.cart .remove {
+    text-align: center;
+}
+.cart .title,
+.cart .product-price,
+.cart .quantity,
+.cart .total {
+    border-right: $main-border;
+}
+/* Cart: Item */
+.cart-item {
+    border-bottom: $main-border;
+}
+
+/* Cart: Quantity */
+.cart .quantity {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.cart .quantity input {
+    border: 0px;
+    height: 100%;
+}
+.cart .quantity .input {
+    border-right: $main-border;
+}
+.cart .quantity .buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.cart .quantity .buttons #up {
+    border-bottom: $main-border;
+}
+.cart input[type="button"] {
+    background: transparent;
+    cursor: pointer;
+}
+.cart input[type="button"]:hover {
+    background: $black;
+    color: $white;
+    cursor: pointer;
+}
+
+
+
+/* Cart: Subtotal */
+.cart .subtotal {
+    border-bottom: $main-border;
+    padding: 40px 0px;
+}
+
+
+/* Single Product */
+.single-product .container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.single-product .info {
+    border-right: 2px solid black;
+}
+.single-product .thumbnails {
+    width: 100%;
+    overflow: hidden;
+}
+.single-product .thumbnails ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    max-width: 100%;
+    overflow-x: scroll;
+    margin: 0;
+    padding: 0;
+}
+.single-product .thumbnails li {
+    display: flex;
+    align-items: stretch;
+    object-fit: cover;
+    height: 100vh;
+}
+.single-product .thumbnails li img {
+    object-fit: cover;
+    height: 100vh;
+}

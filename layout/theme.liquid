@@ -27,6 +27,8 @@
 
   {{ 'style.scss.css' | asset_url | stylesheet_tag }}
 
+  <link rel="stylesheet" href="https://use.typekit.net/epg7qcc.css">
+
   <!--[if lt IE 9]>
   {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
   <![endif]-->
@@ -56,7 +58,7 @@
       of Google Analytics may not work if linking directly to the /checkout page.
     {% endcomment %}
     
-    <a href="/cart">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
+    
           
     {% if shop.customer_accounts_enabled %}
       {% if customer %}
@@ -68,42 +70,25 @@
         {% endif %}
       {% endif %}
     {% endif %}
-    
-    {% comment %}
-      It would be nice if the logo was a shop setting, rather than a theme setting.
-      But for now, it is a theme setting. The shop logo is uploaded on the theme settings page.
-      Link to the theme settings page of currently published theme will always be:
-      http://www.shopify.com/admin/themes/current/settings.
-      To add theme settings to a theme, see this: http://docs.shopify.com/themes/theme-templates/settings
-      Theme settings are added to http://www.shopify.com/admin/themes/current#config/settings.html
-    {% endcomment %}
-
-    {% if settings.use_logo %}
-      <a id="logo" href="/">
-        {{ 'logo.png' | asset_url | img_tag: shop.name }}
-      </a>
-    {% else %}
-      <a id="site-title" href="/">
-        {{ shop.name }}
-      </a>
-    {% endif %}
 
     {% comment %}
-      Main Navigation 
+      Main Navigation
     {% endcomment %}
     {% include 'site-nav' %}
 
   </header>
 
+  <div class="mini-cart-container">
+      {%- include 'mini-cart' -%}
+  </div>
+
   {% comment %}
     IE8 and IE9 don't support the HTML5 placeholder attribute, so it's a good idea to use JavaScript
     to show and hide the placeholder text.
     Have a look in assets/shop.js.liquid to see sample JavaScript for this.
-  {% endcomment %}      
-  <form action="/search" method="get" class="search-form right" role="search">
-    <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
-    <input type="submit" id="search-submit" value="Search" />
-  </form>
+  {% endcomment %}   
+
+
 
   {% comment %}}
     We have a template file to render.
@@ -114,7 +99,7 @@
   </main>
 
   <footer>
-    Copyright &copy; {{ "now" | date: "%Y" }} {{ shop.name }}. {{ powered_by_link }}.
+    Copyright &copy; {{ "now" | date: "%Y" }} {{ shop.name }}.
   </footer>
 
   {{ 'shop.js'  | asset_url | script_tag }}
