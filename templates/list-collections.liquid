@@ -1,0 +1,22 @@
+{{ 'page--list-collections.css' | asset_url | stylesheet_tag }}
+
+
+<section class="collections">
+    <div class="header">
+        <h2>Collections</h2>
+    </div>
+
+    <div class="list">
+        <ul>
+            {% for collection in collections %}
+                <li>
+                    {% if collection.image %}
+                        <img src="{{ collection.image | img_url: 'medium' }}" alt="{{ collection.title }}" />
+                    {% endif %}
+                    <a href="{{ collection.url }}" title="{{ collection.title }}">{{ collection.title }}</a>
+                    <p>{{ collection.products_count }} products</p>
+                </li>
+            {% endfor %}
+        </ul> 
+    </div> 
+</section>

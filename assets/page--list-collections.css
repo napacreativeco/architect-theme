@@ -1,0 +1,11 @@
+.collections .list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+.collections .list li {
+    margin: 0 20px 0 0;
+}
+.collections .list li:last-of-type {
+    margin: 0 0 0 0;
+}
